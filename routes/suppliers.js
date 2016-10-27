@@ -23,4 +23,57 @@ router.get("/supplier/:id", function(req, res, next){
     });
 });
 
+// Save Supplier
+router.post("/supplier", function(req, res, next){
+    var supplier = req.body;
+    if(!supplier.supName){
+        res.status(400);
+        res.json({
+            error: "Bad Data"
+        });
+    } else{
+        db.suppliers.save(supplier, function(err, supplier){
+            if(err){
+            res.send(err);
+        }
+        res.json(supplier);
+        });
+    }
+});
+
+// Delete Supplier
+router.delete("/supplier/:id", function(req, res, next){
+    db.suppliers.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, supplier){
+        if(err){
+            res.send(err);
+        }
+        res.json(supplier);
+    });
+});
+
+// Update Supplier
+router.put("/supplier/:id", function(req, res, next){
+    var supplier = req.body;
+    var updSupplier = {};
+
+    if(supplier.supName){
+        updSupplier.supName = supplier.supName;
+    };
+
+    if(!updSupplier){
+        res.status(400);
+        res.json({
+            error: "Bad Data"
+        });
+    } else {
+        db.suppliers.update({_id: mongojs.ObjectId(req.params.id)}, updSupplier, {}, function(err, supplier){
+        if(err){
+            res.send(err);
+        }
+        res.json(supplier);
+    });
+    }
+    
+});
+
 module.exports = router;
