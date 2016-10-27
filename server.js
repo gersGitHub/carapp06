@@ -10,12 +10,12 @@ var port = (process.env.PORT || '3000');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './client/dist/'));
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static(path.join(__dirname, './client/dist/')));
 
 // Body Parser MW (Middleware)
 app.use(bodyParser.json());
