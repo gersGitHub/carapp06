@@ -1,3 +1,38 @@
-<h1>
-  {{title}}
-</h1>
+<body>
+    <nav class="navbar navbar-inverse">
+
+      <div class="container-fluid">
+
+          <a class="navbar-brand"><b>Caraden Construction Ltd.</b></a>
+
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a [routerLink]="['./home']">
+                Home
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['./supplier']">
+                Supplier
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['./bank']">
+                Bank
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['./banktran']">
+                Bank Statement
+              </a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+
+    <div id="main" class="container-fluid">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </body>

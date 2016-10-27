@@ -1,0 +1,19 @@
+<form class="well" (submit)="addSupplier($event)">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="supName" name="supName" class="form-control" placeholder="Add Supplier . . .">
+    </div>
+</form>
+
+<div class="supplier-list">
+    <div class="row">
+        <div *ngFor="let supplier of suppliers">
+            <div class="col-md-7 col-md-offset-1">
+                {{supplier.supName}}
+            </div>
+            <div class="col-md-4">
+                <input type="button" (click)="deleteSupplier(supplier._id)" value="delete" class="btn btn-danger">
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>
