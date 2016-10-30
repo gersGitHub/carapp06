@@ -1,3 +1,21 @@
-<p>
-  bank-tran works!
-</p>
+<div class="bankTran-list">
+  <div class="row" *ngFor="let banktran of banktrans" ng-class="$even ? 'striped' : 'unstriped'">
+    <div class="col-md-1 col-md-offset-1">
+      {{banktran.bankTranDate | date:"dd/MM/yyyy"}}
+    </div>
+    <div class="col-md-1">
+      {{banktran.bankTranRef}}
+    </div>
+    <div class="col-md-7">
+      {{banktran.bankTranDetail}}
+    </div>
+    <div align="right" class="col-md-1">
+      {{banktran.bankTranAmnt | number:'1.2-2'}}
+    </div>
+    <div align="right" class="col-md-1">
+      {{banktran.bankTranBal | number:'1.2-2'}}
+    </div>
+  </div>
+  <br><br>
+
+</div>
